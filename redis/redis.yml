@@ -12,7 +12,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: redis-data-pv
   local:
-    path: /srv/softwareheritag-kube/dev/redis
+    path: /srv/softwareheritage-kube/dev/redis
   nodeAffinity:
     required:
       nodeSelectorTerms:
