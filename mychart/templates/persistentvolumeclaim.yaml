@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redis-data-pvc-helm
+  namespace: helm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: redis-data-pv-helm
+  resources:
+    requests:
+      storage: 1Gi
