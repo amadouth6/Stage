@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: counters
+data:
+  config.yml: |
+    counters:
+      cls: redis
+      host: redis:6379
+    history:
+      cls: prometheus
+      prometheus_host: prometheus
+      prometheus_port: 9090
+      live_data_start: 1609462861 # 2021-01-01
+      cache_base_directory: /tmp
+      interval: 1h
+      labels:
+        environment: dev
+  entrypoint.sh: |
+    #!/bin/bash
+
+    set -e
+
+    wait-for-it redis:6379 -s --timeout=0
+
+    exec gunicorn --bind 0.0.0.0:5011 \
+         --reload \
+         --threads 4 \
+         --workers 2 \
+         --log-level ${LOGLEVEL} \
+         --timeout 3600 \
+         --config 'python:swh.core.api.gunicorn_config' \
+         'swh.counters.api.server:make_app_from_configfile()'
