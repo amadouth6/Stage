@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1alpha1
+apiVersion: v1
 kind: Application
 metadata:
   name: root
@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: my_apps/
-    repoURL: https://github.com/amadouth6/Stage.git
+    repoURL: https://github.com/amadouth6/Stage.git/my_apps
     targetRevision: helmv1
   syncPolicy:
     automated:
