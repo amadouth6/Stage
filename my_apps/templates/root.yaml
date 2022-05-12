@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: my_apps/
-    repoURL: https://github.com/amadouth6/Stage.git/my_apps
+    repoURL: https://github.com/amadouth6/Stage.git/
     targetRevision: helmv1
   syncPolicy:
     automated:
