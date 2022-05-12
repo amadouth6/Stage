@@ -12,7 +12,7 @@ spec:
   source:
     path: my_apps/
     repoURL: https://github.com/amadouth6/Stage.git/
-    targetRevision: helmv1
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
